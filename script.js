@@ -1,27 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const modelViewer = document.getElementById('product-360-degree-viewer');
-    const zoomInButton = document.querySelector('.zoom-in');
-    const zoomOutButton = document.querySelector('.zoom-out');
-
-    zoomInButton.addEventListener('click', () => {
-        // 현재 줌 레벨을 0.1 증가시킵니다.
-        modelViewer.cameraControls.zoom += 0.1; 
-    });
-
-    zoomOutButton.addEventListener('click', () => {
-        // 현재 줌 레벨을 0.1 감소시킵니다.
-        modelViewer.cameraControls.zoom -= 0.1; 
-    });
-
-    modelViewer.addEventListener('load', () => {
-        modelViewer.autoRotate = true;
-    });
-
-    modelViewer.addEventListener('click', () => {
-        if (modelViewer.cameraControls.isOrbiting) {
-            modelViewer.cameraControls.stopOrbiting();
-        } else {
-            modelViewer.cameraControls.orbit(0, 0.01);
-        }
-    });
-});
+// Handles loading the events for <model-viewer>'s slotted progress bar
+const onProgress = (event) => {
+    const progressBar = event.target.querySelector('.progress-bar');
+    const updatingBar = event.target.querySelector('.update-bar');
+    updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+    if (event.detail.totalProgress === 1) {
+      progressBar.classList.add('hide');
+      event.target.removeEventListener('progress', onProgress);
+    } else {
+      progressBar.classList.remove('hide');
+    }
+  };
+  document.querySelector('model-viewer').addEventListener('progress', onProgress);
