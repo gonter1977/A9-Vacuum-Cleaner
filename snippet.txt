@@ -3,7 +3,7 @@
         <div class="update-bar"></div>
     </div>
     <button slot="ar-button" id="ar-button">
-        View in your space
+        증강현실 보기
     </button>
     <div id="ar-prompt">
         <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
