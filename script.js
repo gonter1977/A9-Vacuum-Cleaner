@@ -11,3 +11,7 @@ const onProgress = (event) => {
     }
   };
   document.querySelector('model-viewer').addEventListener('progress', onProgress);
+
+  // AR 버튼의 텍스트를 "증강현실 보기"로 변경
+  const arButton = document.querySelector('#ar-button');
+  arButton.textContent = '증강현실 보기'; // 'View in your space'를 '증강현실 보기'로 변경
